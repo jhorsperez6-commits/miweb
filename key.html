@@ -24,12 +24,12 @@
 
     <div class="card">
         <h1>SERVE PENE HUB</h1>
-        <div class="subtitle">Sistema de Keys Verificado</div>
+        <div class="subtitle">Sistema de Keys Únicas</div>
 
         <div id="contentBox">
-            <div class="key-title">¡Proceso completado con éxito!</div>
+            <div class="key-title">¡Key generada sin repeticiones!</div>
             <div class="key-box">
-                <div class="key-text" id="assignedKey">Cargando key...</div>
+                <div class="key-text" id="assignedKey">Generando key única...</div>
                 <button class="btn btn-copy" onclick="copiarKey()">Copiar Key al Portapapeles</button>
             </div>
             <div style="margin-top: 20px; font-size: 12px; color: #8c91a0;">
@@ -39,12 +39,13 @@
     </div>
 
     <script>
-        // Banco de keys aleatorias del sistema
-        const bancoDeKeys = [
-            "SPH-ALPHA-8492", "SPH-BETA-3312", "SPH-PRO-9921", "SPH-LUA-7714", "SPH-HUB-5520",
-            "SPH-FAST-1193", "SPH-GOD-6648", "SPH-VIP-2295", "SPH-PREM-4481", "SPH-ELITE-9903",
-            "SPH-MAX-1234", "SPH-ULTRA-5678", "SPH-CORE-9012", "SPH-NET-3456", "SPH-WEB-7890",
-            "SPH-KEY-1122", "SPH-KEY-3344", "SPH-KEY-5566", "SPH-KEY-7788", "SPH-KEY-9900"
+        // Banco inicial de keys (puedes agregar tantas como quieras aquí o estructurarlas)
+        const masterKeys = [
+            "SPH-KEY-ALPHA-01", "SPH-KEY-BETA-02", "SPH-KEY-GAMMA-03", "SPH-KEY-DELTA-04", "SPH-KEY-OMEGA-05",
+            "SPH-KEY-PRO-06",   "SPH-KEY-VIP-07",   "SPH-KEY-GOD-08",   "SPH-KEY-LUA-09",   "SPH-KEY-HUB-10",
+            "SPH-KEY-ELITE-11", "SPH-KEY-MAX-12",   "SPH-KEY-ULTRA-13", "SPH-KEY-CORE-14",  "SPH-KEY-NET-15",
+            "SPH-KEY-FAST-16",  "SPH-KEY-SAFE-17",  "SPH-KEY-SEC-18",   "SPH-KEY-TOP-19",   "SPH-KEY-BEST-20",
+            // Aquí puedes seguir agregando más keys separadas por comas si lo deseas
         ];
 
         window.onload = function() {
@@ -52,20 +53,39 @@
             const expireTime = parseInt(localStorage.getItem("sph_user_expire") || "0");
             const currentTime = Date.now();
 
-            // Si ya tiene una key activa y no ha vencido (10 horas), se la mostramos
+            // 1. Si el usuario ya tiene una key activa y no ha vencido (10 horas), se la mostramos intacta
             if (savedKey && expireTime && currentTime < expireTime) {
                 document.getElementById("assignedKey").innerText = savedKey;
                 return;
             }
 
-            // Si no tiene, generamos una key random nueva única para este usuario
-            const randomKey = bancoDeKeys[Math.floor(Math.random() * bancoDeKeys.length)] + "-" + Math.floor(Math.random() * 8999 + 1000);
+            // 2. Obtenemos las keys que ya se han usado o repartido previamente en este navegador
+            let usadas = JSON.parse(localStorage.getItem("sph_keys_usadas") || "[]");
 
-            // Guardamos la key por 10 horas (36,000,000 milisegundos)
-            localStorage.setItem("sph_user_assigned_key", randomKey);
+            // Filtramos el masterKeys para sacar solo las que TODAVÍA NO se han usado
+            let disponibles = masterKeys.filter(k => !usadas.includes(k));
+
+            let selectedKey = "";
+
+            if (disponibles.length > 0) {
+                // Elegimos una key al azar de las que están libres
+                const randomIndex = Math.floor(Math.random() * disponibles.length);
+                selectedKey = disponibles[randomIndex];
+            } else {
+                // Si por alguna razón se acabaron todas las del array, generamos una aleatoria de emergencia única
+                selectedKey = "SPH-RANDOM-" + Math.random().toString(36).substring(2, 8).toUpperCase() + "-" + Math.floor(Math.random() * 899 + 100);
+            }
+
+            // Marcamos esta key como usada para que no se repita
+            usadas.push(selectedKey);
+            localStorage.setItem("sph_keys_usadas", JSON.stringify(usadas));
+
+            // Guardamos la key del usuario actual y su expiración (10 horas = 36,000,000 ms)
+            localStorage.setItem("sph_user_assigned_key", selectedKey);
             localStorage.setItem("sph_user_expire", currentTime + 36000000);
 
-            document.getElementById("assignedKey").innerText = randomKey;
+            // Mostramos la key en pantalla
+            document.getElementById("assignedKey").innerText = selectedKey;
         }
 
         function copiarKey() {
