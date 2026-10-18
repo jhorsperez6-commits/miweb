@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serve Pene Hub - Tu Key Generada</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #0b0c10, #1f2833); color: #ffffff; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .card { background-color: #121316; border: 1px solid #2d3142; padding: 35px 25px; border-radius: 16px; width: 100%; max-width: 440px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); }
+        h1 { color: #00bfff; font-size: 24px; margin-bottom: 5px; font-weight: 700; letter-spacing: 1px; }
+        .subtitle { color: #8c91a0; font-size: 13px; margin-bottom: 25px; }
+        
+        .key-box { background-color: #1a1c23; border: 1px dashed #00bfff; padding: 20px; border-radius: 10px; margin-top: 15px; }
+        .key-title { font-size: 13px; color: #00ff88; margin-bottom: 8px; font-weight: bold; }
+        .key-text { color: #ffffff; font-family: monospace; font-size: 16px; font-weight: bold; margin-bottom: 15px; word-break: break-all; background: #0b0c10; padding: 10px; border-radius: 6px; border: 1px solid #333; }
+        
+        .btn { background: linear-gradient(135deg, #00bfff, #0077ff); color: white; border: none; padding: 14px; width: 100%; border-radius: 10px; font-weight: bold; font-size: 14px; cursor: pointer; text-decoration: none; display: inline-block; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3); text-align: center; }
+        .btn:active { transform: scale(0.98); }
+        .btn-copy { background: linear-gradient(135deg, #00cc66, #00994d); box-shadow: 0 4px 15px rgba(0, 204, 102, 0.3); }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>SERVE PENE HUB</h1>
+        <div class="subtitle">Sistema de Keys Verificado</div>
+
+        <div id="contentBox">
+            <div class="key-title">¡Proceso completado con éxito!</div>
+            <div class="key-box">
+                <div class="key-text" id="assignedKey">Cargando key...</div>
+                <button class="btn btn-copy" onclick="copiarKey()">Copiar Key al Portapapeles</button>
+            </div>
+            <div style="margin-top: 20px; font-size: 12px; color: #8c91a0;">
+                Esta key es única para ti y tiene una duración de <b>10 horas</b>.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Banco de keys aleatorias del sistema
+        const bancoDeKeys = [
+            "SPH-ALPHA-8492", "SPH-BETA-3312", "SPH-PRO-9921", "SPH-LUA-7714", "SPH-HUB-5520",
+            "SPH-FAST-1193", "SPH-GOD-6648", "SPH-VIP-2295", "SPH-PREM-4481", "SPH-ELITE-9903",
+            "SPH-MAX-1234", "SPH-ULTRA-5678", "SPH-CORE-9012", "SPH-NET-3456", "SPH-WEB-7890",
+            "SPH-KEY-1122", "SPH-KEY-3344", "SPH-KEY-5566", "SPH-KEY-7788", "SPH-KEY-9900"
+        ];
+
+        window.onload = function() {
+            const savedKey = localStorage.getItem("sph_user_assigned_key");
+            const expireTime = parseInt(localStorage.getItem("sph_user_expire") || "0");
+            const currentTime = Date.now();
+
+            // Si ya tiene una key activa y no ha vencido (10 horas), se la mostramos
+            if (savedKey && expireTime && currentTime < expireTime) {
+                document.getElementById("assignedKey").innerText = savedKey;
+                return;
+            }
+
+            // Si no tiene, generamos una key random nueva única para este usuario
+            const randomKey = bancoDeKeys[Math.floor(Math.random() * bancoDeKeys.length)] + "-" + Math.floor(Math.random() * 8999 + 1000);
+
+            // Guardamos la key por 10 horas (36,000,000 milisegundos)
+            localStorage.setItem("sph_user_assigned_key", randomKey);
+            localStorage.setItem("sph_user_expire", currentTime + 36000000);
+
+            document.getElementById("assignedKey").innerText = randomKey;
+        }
+
+        function copiarKey() {
+            const keyText = document.getElementById("assignedKey").innerText;
+            navigator.clipboard.writeText(keyText).then(() => {
+                alert("¡Key copiada con éxito! Ya puedes usarla en tu ejecutor.");
+            });
+        }
+    </script>
+
+</body>
+</html>
