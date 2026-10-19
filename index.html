@@ -59,7 +59,6 @@
             margin-bottom: 30px;
         }
 
-        /* Pantalla inicial */
         #inicio {
             display: block;
         }
@@ -77,7 +76,6 @@
             text-transform: uppercase;
         }
 
-        /* Pantalla de pasos */
         #pasos {
             display: none;
         }
@@ -150,7 +148,6 @@
             display: none;
         }
 
-        /* Botón final */
         #btnGenerar {
             display: none;
             margin-top: 10px;
@@ -203,9 +200,9 @@
             <div class="paso" id="paso1">
                 <div class="paso-info">
                     <strong>YouTube</strong>
-                    <span>Ver el video</span>
+                    <span>Visitar el canal</span>
                 </div>
-                <button class="btn-paso" id="btn1" onclick="completarPaso(1)">Ir</button>
+                <button class="btn-paso" id="btn1" onclick="completarPaso(1, 'https://youtube.com/@jhorsperez-y3x')">Ir</button>
                 <div class="check">✓</div>
             </div>
 
@@ -213,9 +210,9 @@
             <div class="paso bloqueado" id="paso2">
                 <div class="paso-info">
                     <strong>TikTok</strong>
-                    <span>Seguir cuenta</span>
+                    <span>Seguir la cuenta</span>
                 </div>
-                <button class="btn-paso" id="btn2" onclick="completarPaso(2)" disabled>Bloqueado</button>
+                <button class="btn-paso" id="btn2" onclick="completarPaso(2, 'https://www.tiktok.com/@alex12l0')" disabled>Bloqueado</button>
                 <div class="check">✓</div>
             </div>
 
@@ -225,7 +222,7 @@
                     <strong>Discord</strong>
                     <span>Unirse al servidor</span>
                 </div>
-                <button class="btn-paso" id="btn3" onclick="completarPaso(3)" disabled>Bloqueado</button>
+                <button class="btn-paso" id="btn3" onclick="completarPaso(3, 'https://discord.gg/p5fyg6vX5')" disabled>Bloqueado</button>
                 <div class="check">✓</div>
             </div>
 
@@ -244,9 +241,12 @@
             document.getElementById("pasos").style.display = "block";
         }
 
-        function completarPaso(numero) {
+        function completarPaso(numero, link) {
             const btn = document.getElementById("btn" + numero);
             const paso = document.getElementById("paso" + numero);
+
+            // Abrir el link
+            window.open(link, "_blank");
 
             // Poner loader
             btn.innerHTML = '<span class="loader"></span> Espere...';
