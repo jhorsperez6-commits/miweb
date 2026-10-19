@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
@@ -23,164 +23,190 @@
         }
 
         .card {
-            background: #0c0c14;
-            border: 1px solid #1a1a2e;
-            border-radius: 22px;
+            background: #0c0c12;
+            border: 1px solid #1a1a24;
+            border-radius: 28px;
             width: 100%;
-            max-width: 400px;
-            padding: 40px 26px;
+            max-width: 380px;
+            padding: 40px 24px 32px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
         }
 
         .logo {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #00e5ff, #00ff88);
-            border-radius: 18px;
+            width: 72px;
+            height: 72px;
+            border: 2px solid #2a8a9a;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto 22px;
             font-size: 26px;
-            font-weight: 800;
-            color: #000;
-            margin: 0 auto 20px;
+            font-weight: 700;
+            color: #3ecfdf;
+            font-family: Georgia, serif;
         }
 
         h1 {
-            font-size: 24px;
-            color: #00e5ff;
-            margin-bottom: 6px;
+            font-size: 28px;
+            font-weight: 600;
+            color: #f0f0f5;
+            margin-bottom: 8px;
+            font-family: Georgia, 'Times New Roman', serif;
         }
 
         .subtitle {
-            color: #666;
-            font-size: 13px;
-            margin-bottom: 30px;
+            color: #777790;
+            font-size: 14px;
+            margin-bottom: 32px;
         }
 
-        #inicio {
-            display: block;
+        .steps-box {
+            background: #111118;
+            border: 1px solid #1e1e2a;
+            border-radius: 20px;
+            padding: 22px 18px;
+            text-align: left;
         }
 
-        .btn-principal {
-            background: linear-gradient(135deg, #00ff88, #00e676);
-            color: #000;
-            border: none;
-            padding: 16px;
-            width: 100%;
-            border-radius: 14px;
+        .steps-title {
+            text-align: center;
             font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            text-transform: uppercase;
+            font-weight: 600;
+            color: #e8e8f0;
+            margin-bottom: 6px;
         }
 
-        #pasos {
-            display: none;
+        .steps-desc {
+            text-align: center;
+            font-size: 12.5px;
+            color: #777790;
+            margin-bottom: 22px;
+            line-height: 1.45;
         }
 
         .paso {
-            background: #12121c;
-            border: 1px solid #222;
+            background: #16161f;
+            border: 1px solid #252532;
             border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 14px;
+            padding: 14px 14px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 12px;
+            gap: 14px;
+            transition: 0.25s;
         }
 
-        .paso.bloqueado {
-            opacity: 0.45;
+        .paso:last-of-type {
+            margin-bottom: 0;
         }
 
         .paso.completado {
-            border-color: #00ff88;
+            border-color: #2a8a9a;
+        }
+
+        .paso.bloqueado {
+            opacity: 0.55;
+        }
+
+        .icono {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1.5px solid #3ecfdf;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #3ecfdf;
+            flex-shrink: 0;
         }
 
         .paso-info {
-            text-align: left;
             flex: 1;
         }
 
         .paso-info strong {
             display: block;
-            font-size: 15px;
-            margin-bottom: 3px;
+            font-size: 14px;
+            color: #e8e8f0;
+            margin-bottom: 2px;
         }
 
         .paso-info span {
             font-size: 12px;
-            color: #777;
-        }
-
-        .btn-paso {
-            background: #00bfff;
-            color: #000;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            white-space: nowrap;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-paso:disabled,
-        .btn-paso.disabled {
-            background: #333;
-            color: #777;
-            cursor: not-allowed;
-            pointer-events: none;
+            color: #777790;
         }
 
         .check {
-            color: #00ff88;
-            font-size: 22px;
-            display: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1.5px solid #3ecfdf;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #3ecfdf;
+            flex-shrink: 0;
         }
 
         .paso.completado .check {
-            display: block;
+            background: #3ecfdf;
+            color: #000;
+            border-color: #3ecfdf;
         }
 
-        .paso.completado .btn-paso {
-            display: none;
+        .progress-section {
+            margin-top: 22px;
         }
 
-        #btnGenerar {
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #777790;
+            margin-bottom: 8px;
+        }
+
+        .progress-header span:last-child {
+            color: #3ecfdf;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #1e1e2a;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #3ecfdf;
+            border-radius: 10px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 12px;
+            color: #666680;
+            margin-top: 14px;
+        }
+
+        .btn-generar {
             display: none;
-            margin-top: 10px;
-            background: linear-gradient(135deg, #00ff88, #00e676);
+            margin-top: 20px;
+            background: #3ecfdf;
             color: #000;
             border: none;
-            padding: 16px;
+            padding: 15px;
             width: 100%;
             border-radius: 14px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .loader {
-            width: 18px;
-            height: 18px;
-            border: 2px solid #000;
-            border-top: 2px solid transparent;
-            border-radius: 50%;
-            display: inline-block;
-            animation: spin 0.7s linear infinite;
-            vertical-align: middle;
-            margin-right: 6px;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -188,107 +214,100 @@
 
     <div class="card">
         <div class="logo">SP</div>
-        <h1>SERVE PENE HUB</h1>
-        <div class="subtitle">Sistema Oficial de Keys</div>
+        <h1>Serve Pene Hub</h1>
+        <div class="subtitle">Earn rewards. Grow communities.</div>
 
-        <!-- PANTALLA INICIO -->
-        <div id="inicio">
-            <button class="btn-principal" onclick="mostrarPasos()">
-                Hacer los pasos
-            </button>
-        </div>
-
-        <!-- PANTALLA DE PASOS -->
-        <div id="pasos">
-
-            <!-- PASO 1 - YouTube -->
-            <div class="paso" id="paso1">
-                <div class="paso-info">
-                    <strong>YouTube</strong>
-                    <span>Visitar el canal</span>
-                </div>
-                <a href="https://youtube.com/@jhorsperez-y3x" target="_blank" class="btn-paso" id="btn1" onclick="iniciarPaso(1)">
-                    Ir
-                </a>
-                <div class="check">✓</div>
+        <div class="steps-box">
+            <div class="steps-title">Get started in 3 simple steps</div>
+            <div class="steps-desc">
+                Complete the steps below to connect your accounts<br>
+                and start earning rewards.
             </div>
 
-            <!-- PASO 2 - TikTok -->
-            <div class="paso bloqueado" id="paso2">
+            <!-- PASO 1 -->
+            <div class="paso" id="paso1" onclick="completarPaso(1, 'https://youtube.com/@jhorsperez-y3x')">
+                <div class="icono">▶</div>
                 <div class="paso-info">
-                    <strong>TikTok</strong>
-                    <span>Seguir la cuenta</span>
+                    <strong>1. Connect YouTube</strong>
+                    <span>Link your YouTube account to get started.</span>
                 </div>
-                <a href="https://www.tiktok.com/@alex12l0" target="_blank" class="btn-paso disabled" id="btn2" onclick="iniciarPaso(2)">
-                    Bloqueado
-                </a>
-                <div class="check">✓</div>
+                <div class="check" id="check1">○</div>
             </div>
 
-            <!-- PASO 3 - Discord -->
-            <div class="paso bloqueado" id="paso3">
+            <!-- PASO 2 -->
+            <div class="paso bloqueado" id="paso2" onclick="completarPaso(2, 'https://www.tiktok.com/@alex12l0')">
+                <div class="icono">♪</div>
                 <div class="paso-info">
-                    <strong>Discord</strong>
-                    <span>Unirse al servidor</span>
+                    <strong>2. Connect TikTok</strong>
+                    <span>Link your TikTok account to continue.</span>
                 </div>
-                <a href="https://discord.gg/p5fyg6vX5" target="_blank" class="btn-paso disabled" id="btn3" onclick="iniciarPaso(3)">
-                    Bloqueado
-                </a>
-                <div class="check">✓</div>
+                <div class="check" id="check2">○</div>
             </div>
 
-            <!-- BOTÓN FINAL -->
-            <button id="btnGenerar" onclick="irAWorkInk()">
+            <!-- PASO 3 -->
+            <div class="paso bloqueado" id="paso3" onclick="completarPaso(3, 'https://discord.gg/p5fyg6vX5')">
+                <div class="icono">◉</div>
+                <div class="paso-info">
+                    <strong>3. Join Discord</strong>
+                    <span>Join our Discord server to unlock rewards.</span>
+                </div>
+                <div class="check" id="check3">○</div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span>Progress</span>
+                    <span id="progressText">0 of 3 completed</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">Complete all steps to start earning rewards.</div>
+            </div>
+
+            <button class="btn-generar" id="btnGenerar" onclick="irAWorkInk()">
                 Generar Key
             </button>
         </div>
     </div>
 
     <script>
-        let pasosCompletados = 0;
+        let completados = 0;
+        const total = 3;
 
-        function mostrarPasos() {
-            document.getElementById("inicio").style.display = "none";
-            document.getElementById("pasos").style.display = "block";
-        }
+        function completarPaso(num, link) {
+            const paso = document.getElementById("paso" + num);
 
-        function iniciarPaso(numero) {
-            const btn = document.getElementById("btn" + numero);
-            const paso = document.getElementById("paso" + numero);
+            // Si está bloqueado o ya está completado, no hacer nada
+            if (paso.classList.contains("bloqueado") || paso.classList.contains("completado")) {
+                return;
+            }
 
-            // Evitar que se pueda dar varias veces
-            if (paso.classList.contains("completado")) return;
+            // Abrir el link
+            window.open(link, "_blank");
 
-            // Cambiar a loader
-            btn.innerHTML = '<span class="loader"></span> Espere...';
-            btn.classList.add("disabled");
+            // Marcar como completado
+            paso.classList.add("completado");
+            document.getElementById("check" + num).innerText = "✓";
+            completados++;
 
-            // Después de 5 segundos marcar como completado
-            setTimeout(() => {
-                paso.classList.remove("bloqueado");
-                paso.classList.add("completado");
-                pasosCompletados++;
+            // Actualizar barra
+            const porcentaje = (completados / total) * 100;
+            document.getElementById("progressFill").style.width = porcentaje + "%";
+            document.getElementById("progressText").innerText = completados + " of 3 completed";
 
-                // Desbloquear siguiente
-                if (numero === 1) {
-                    const btn2 = document.getElementById("btn2");
-                    btn2.classList.remove("disabled");
-                    btn2.innerText = "Ir";
-                    document.getElementById("paso2").classList.remove("bloqueado");
-                }
+            // Desbloquear el siguiente
+            if (num === 1) {
+                document.getElementById("paso2").classList.remove("bloqueado");
+            }
+            if (num === 2) {
+                document.getElementById("paso3").classList.remove("bloqueado");
+            }
 
-                if (numero === 2) {
-                    const btn3 = document.getElementById("btn3");
-                    btn3.classList.remove("disabled");
-                    btn3.innerText = "Ir";
-                    document.getElementById("paso3").classList.remove("bloqueado");
-                }
-
-                // Si completó los 3
-                if (pasosCompletados === 3) {
-                    document.getElementById("btnGenerar").style.display = "block";
-                }
-            }, 5000);
+            // Si terminó los 3
+            if (completados === 3) {
+                document.getElementById("btnGenerar").style.display = "block";
+            }
         }
 
         function irAWorkInk() {
