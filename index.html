@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serve Pene Hub - Generar Key</title>
+    <title>Serve Pene Hub</title>
     <style>
         * {
             box-sizing: border-box;
@@ -30,7 +30,7 @@
             max-width: 400px;
             padding: 44px 28px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
             position: relative;
             overflow: hidden;
         }
@@ -46,18 +46,18 @@
         }
 
         .logo {
-            width: 70px;
-            height: 70px;
+            width: 72px;
+            height: 72px;
             background: linear-gradient(135deg, #00bfff, #00ff88);
-            border-radius: 18px;
-            margin: 0 auto 20px;
+            border-radius: 20px;
+            margin: 0 auto 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 800;
             color: #000;
-            box-shadow: 0 8px 25px rgba(0, 191, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.3);
         }
 
         h1 {
@@ -71,58 +71,57 @@
         .subtitle {
             color: #7a8a9a;
             font-size: 13px;
-            margin-bottom: 36px;
+            margin-bottom: 38px;
         }
 
-        .btn-generar {
+        .btn-main {
             display: block;
             background: linear-gradient(135deg, #00ff88, #00e676);
             color: #000;
             text-decoration: none;
-            padding: 17px;
+            padding: 18px;
             border-radius: 14px;
             font-size: 16px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.25s;
+            transition: all 0.25s ease;
             box-shadow: 0 8px 25px rgba(0, 255, 136, 0.25);
         }
 
-        .btn-generar:hover {
+        .btn-main:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 255, 136, 0.4);
+            box-shadow: 0 14px 35px rgba(0, 255, 136, 0.4);
         }
 
-        .btn-generar:active {
+        .btn-main:active {
             transform: translateY(0);
         }
 
         .info {
             margin-top: 28px;
-            font-size: 12px;
+            font-size: 12.5px;
             color: #6a7a8a;
             line-height: 1.6;
         }
 
         .pasos {
-            margin-top: 32px;
-            display: flex;
-            justify-content: space-between;
+            margin-top: 34px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 10px;
         }
 
         .paso {
-            flex: 1;
             background: #151520;
             border: 1px solid #1e2a3a;
             border-radius: 12px;
-            padding: 14px 8px;
+            padding: 14px 6px;
             font-size: 11px;
             color: #7a8a9a;
         }
 
-        .paso span {
+        .paso .num {
             display: block;
             font-size: 18px;
             margin-bottom: 6px;
@@ -142,26 +141,26 @@
         <h1>SERVE PENE HUB</h1>
         <div class="subtitle">Sistema Oficial de Keys</div>
 
-        <!-- BOTÓN QUE MANDA A WORK.INK -->
-        <a href="https://work.ink/34J6/key-sistem" class="btn-generar">
+        <!-- Este botón manda al work.ink -->
+        <a href="https://work.ink/34J6/key-sistem" class="btn-main">
             🔑 Generar Key
         </a>
 
         <div class="info">
-            Completa los anuncios para recibir tu key de acceso de 10 horas.
+            Completa los anuncios para desbloquear tu key de acceso de 10 horas.
         </div>
 
         <div class="pasos">
             <div class="paso">
-                <span>1️⃣</span>
+                <span class="num">1️⃣</span>
                 <strong>Toca</strong><br>el botón
             </div>
             <div class="paso">
-                <span>2️⃣</span>
+                <span class="num">2️⃣</span>
                 <strong>Completa</strong><br>los anuncios
             </div>
             <div class="paso">
-                <span>3️⃣</span>
+                <span class="num">3️⃣</span>
                 <strong>Recibe</strong><br>tu key
             </div>
         </div>
